@@ -1,0 +1,274 @@
+﻿@page "/counter"
+@rendermode InteractiveServer
+
+<PageTitle>Counter</PageTitle>
+
+<!------------------------contador +|- ---------------------------->
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Suma</button>
+&thinsp;
+<button class="btn btn-primary" @onclick="DecrementCount">Resta</button>
+<hr>
+<!--                    Contador +|-                    -->
+<!------------------------operadores +|- ---------------------------->
+<h1>operadores</h1>
+<br>
+<p role="status">:Resultado: @Resultado</p>
+<input type="text" name="num1" id="num1" @bind="num1" />
+<input type="text" name="num2" id="num2" @bind="num2" />
+<br>
+<button class="btn btn-primary" @onclick="sumar">+</button>
+&thinsp;
+<button class="btn btn-primary" @onclick="restar">-</button>
+&thinsp;
+<button class="btn btn-primary" @onclick="Multiplicar">*</button>
+&thinsp;
+<button class="btn btn-primary" @onclick="Dividir">/</button>
+<hr>
+<!------------------------calculadora---------------------------->
+
+<h1>calculadora</h1>
+<table class="calc-table">
+    <tr>
+       <td colspan="4"><input type="text" name="pantalla" id="pantalla" @bind="pantalla" readonly /></td>   
+    </tr>
+    <tr>
+        <td><button class="btn btn-primary" @onclick="borrar" arial-label="borrar">
+            <span aria-hidden="true">⌫</span>
+            <span class="visually-hidden">Borrar</span>
+        </button></td>
+        <td><button class="btn btn-primary" @onclick="limpiar" arial-label="limpiar">
+            <span aria-hidden="true">C</span>
+            <span class="visually-hidden">limpiar</span>
+        </button></td>
+        <td><button class="btn btn-primary" @onclick="porcentaje">%</button></td>
+        <td><button class="btn btn-primary" @onclick="dividir">/</button></td>
+    </tr>
+    <tr>
+        <td><button class="btn btn-primary" @onclick="siete">7</button></td>
+        <td><button class="btn btn-primary" @onclick="ocho">8</button></td>
+        <td><button class="btn btn-primary" @onclick="nueve">9</button></td>
+        <td><button class="btn btn-primary" @onclick="por">*</button></td>
+    </tr>
+    <tr>
+        <td><button class="btn btn-primary" @onclick="cuatro">4</button></td>
+        <td><button class="btn btn-primary" @onclick="cinco">5</button></td>
+        <td><button class="btn btn-primary" @onclick="seis">6</button></td>
+        <td><button class="btn btn-primary" @onclick="menos">-</button></td>
+    </tr>
+    <tr>
+        <td><button class="btn btn-primary" @onclick="uno">1</button></td>
+        <td><button class="btn btn-primary" @onclick="dos">2</button></td>
+        <td><button class="btn btn-primary" @onclick="tres">3</button></td>
+        <td><button class="btn btn-primary" @onclick="mas">+</button></td>
+    </tr>
+    <tr>
+        <td><p role="status">@operacion</p></td>
+        <td><button class="btn btn-primary" @onclick="cero">0</button></td>
+        <td><button class="btn btn-primary" @onclick="sumar">.</button></td>
+        <td><button class="btn btn-primary" @onclick="igual">=</button></td>
+    </tr>
+</table>
+
+<!--------------------------------codigo funcional --------------------------->
+<hr>
+<h2 class="text-center">Menú</h2>
+
+<div class="menu-container">
+
+    <div class="total-box">
+        Total: $ @total
+    </div>
+
+    <div class="productos">
+
+        <div class="card" @onclick="() => AgregarProducto(89)">
+            <img src="imagenes/burger.jpg" alt="Burger" />
+            <p>Extra Bacon</p>
+            <span>$89</span>
+        </div>
+
+        <div class="card" @onclick="() => AgregarProducto(34)">
+            <img src="imagenes/sandwich.jpg" alt="Sandwich" />
+            <p>Sandwich</p>
+            <span>$34</span>
+        </div>
+
+        <div class="card" @onclick="() => AgregarProducto(25)">
+            <img src="imagenes/ensalada.jpg" alt="Ensalada" />
+            <p>Ensalada</p>
+            <span>$25</span>
+        </div>
+
+        <div class="card" @onclick="() => AgregarProducto(70)">
+            <img src="imagenes/pizza.jpg" alt="Pizza" />
+            <p>Pizza</p>
+            <span>$70</span>
+        </div>
+
+        <div class="card" @onclick="() => AgregarProducto(45)">
+            <img src="imagenes/hotdog.png" alt="HotDog" />
+            <p>Hot Dog</p>
+            <span>$45</span>
+        </div>
+
+        <div class="card" @onclick="() => AgregarProducto(20)">
+            <img src="imagenes/refresco.jpg" alt="Refresco" />
+            <p>Refresco</p>
+            <span>$20</span>
+        </div>
+
+    </div>
+
+    <div class="botones">
+        <button class="btn btn-danger" @onclick="LimpiarCuenta">
+            Cancelar
+        </button>
+
+        <button class="btn btn-success" @onclick="Pagar">
+            Pagar
+        </button>
+
+</div>
+@code {
+    <!--------------------------------codigo contador --------------------------->
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+        private void DecrementCount()
+    {
+        currentCount--;
+    }
+    <!--------------------------------codigo contador --------------------------->
+
+    <!--------------------------------codigo operadores --------------------------->
+    private int num1=0;
+    private int num2=0;
+    private int Resultado=0;
+    private void sumar()
+    {
+        Resultado=num1+num2;
+    }
+        private void restar()
+    {
+        Resultado=num1-num2;
+    }
+        private void Multiplicar()
+    {
+        Resultado=num1*num2;
+    }
+        private void Dividir()
+    {
+        if(num2!=0)
+        {
+            Resultado=num1/num2;
+        }
+        else
+        {
+            Resultado=0;
+        }
+    
+
+}
+
+<!--------------------------------codigo operadores --------------------------->
+    private string pantalla = "";
+    private int numero1 = 0;
+    private int numero2 = 0;
+    private string operacion = "";
+    private int Rparcial = 0;
+    void cero() => pantalla += "0";
+    void uno() => pantalla += "1";
+    void dos() => pantalla += "2";
+    void tres() => pantalla += "3";
+    void cuatro() => pantalla += "4";
+    void cinco() => pantalla += "5";
+    void seis() => pantalla += "6";
+    void siete() => pantalla += "7";
+    void ocho() => pantalla += "8";
+    void nueve() => pantalla += "9";
+    void borrar() => pantalla = pantalla.Length > 0 ? pantalla.Substring(0, pantalla.Length - 1) : "";
+    void limpiar() => pantalla = "";
+    void igual ()
+    {
+        numero2 = pantalla != "" ? int.Parse(pantalla) : 0;
+        pantalla = "";
+        switch (operacion)
+        {
+            case "+":
+                Rparcial = numero1 + numero2;
+                pantalla = Rparcial.ToString();
+                break;
+            case "-":
+                Rparcial = numero1 - numero2;
+                pantalla = Rparcial.ToString();
+                break;
+            case "*":
+                Rparcial = numero1 * numero2;
+                pantalla = Rparcial.ToString();
+                break;
+            case "/":
+                Rparcial = numero2 != 0 ? numero1 / numero2 : 0;
+                pantalla = Rparcial.ToString();
+                break;
+            case "%":
+                Rparcial=numero2!=0 ? numero1%numero2 : 0;
+                pantalla = Rparcial.ToString();
+                break;
+        }
+    
+    }
+    void mas(){
+        operacion = "+";
+        numero1 = pantalla != "" ? int.Parse(pantalla) : 0;
+        pantalla = "";
+    }
+
+    void menos(){
+        operacion = "-";
+        numero1 = pantalla != "" ? int.Parse(pantalla) : 0;
+        pantalla = "";
+    }
+
+    void por() {
+        operacion = "*";
+        numero1 = pantalla != "" ? int.Parse(pantalla) : 0;
+        pantalla = "";
+    }
+
+    void dividir() {
+        operacion = "/";
+        numero1 = pantalla != "" ? int.Parse(pantalla) : 0;
+        pantalla = "";
+    }
+
+    void porcentaje() {
+        operacion = "%";
+        numero1 = pantalla != "" ? int.Parse(pantalla) : 0;
+        pantalla = "";
+    }
+    <!--------------------------------codigo operadores --------------------------->
+    <!-------------------------------------MENÚ CON IMÁGENES--------------------------->
+
+    private decimal total = 0;
+
+    private void AgregarProducto(decimal precio)
+    {
+    total += precio;
+    }
+
+    private void LimpiarCuenta()
+    {
+    total = 0;
+    }
+    private void Pagar()
+    {
+    total = 0;
+    }
+}
