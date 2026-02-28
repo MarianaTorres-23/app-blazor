@@ -83,3 +83,4 @@ c:\Users\USUARIO\Documents\appPII\obj\Debug\net10.0\appPII.pdb
 c:\Users\USUARIO\Documents\appPII\obj\Debug\net10.0\appPII.genruntimeconfig.cache
 c:\Users\USUARIO\Documents\appPII\obj\Debug\net10.0\ref\appPII.dll
 c:\Users\USUARIO\Documents\appPII\obj\Debug\net10.0\compressed\7mmfqhvagc-{0}-neaxbybu98-neaxbybu98.gz
+c:\Users\USUARIO\Documents\appPII\obj\Debug\net10.0\appPII.sourcelink.json
